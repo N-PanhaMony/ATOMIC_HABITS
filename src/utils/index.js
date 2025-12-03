@@ -1,166 +1,128 @@
 export const atomicHabitsProgram = {
-  day1: {
-    title: "Set Your Identity Statement",
-    habit: "Write 1 sentence: 'I am the type of person who ____.'",
-    category: "Mindset",
-    duration: "5 minutes",
+  0: {
+    quote: "Start small, think big.",
+    tasks: [{ activity: "Meditation", detail: "5 min breathing", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day2: {
-    title: "Design Your Habit Cue",
-    habit: "Choose a time & location for your habit.",
-    category: "Clarity",
-    duration: "5 minutes",
+  1: {
+    quote: "Consistency is key.",
+    tasks: [{ activity: "Morning Walk", detail: "Walk 10 min outside", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day3: {
-    title: "2-Minute Rule",
-    habit: "Shrink your habit to a 2-minute version.",
-    category: "Action",
-    duration: "2 minutes",
+  2: {
+    quote: "Knowledge is power.",
+    tasks: [{ activity: "Read Book", detail: "Read 10 pages", time: "15 minutes" }],
+    notes: "",
     completed: false,
   },
-  day4: {
-    title: "Environment Wins",
-    habit: "Remove 1 friction from your environment.",
-    category: "Environment",
-    duration: "5 minutes",
+  3: {
+    quote: "Move your body, move your mind.",
+    tasks: [{ activity: "Stretching", detail: "Full body stretches", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day5: {
-    title: "Habit Stacking",
-    habit: "Attach your habit to an existing routine.",
-    category: "Routine",
-    duration: "3 minutes",
+  4: {
+    quote: "Reflect to grow.",
+    tasks: [{ activity: "Journal", detail: "Write morning thoughts", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day6: {
-    title: "Make It Attractive",
-    habit: "Pair habit with something enjoyable.",
-    category: "Motivation",
-    duration: "5 minutes",
+  5: {
+    quote: "Hydrate and feel alive.",
+    tasks: [{ activity: "Hydration", detail: "Drink 2 glasses of water", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day7: {
-    title: "Weekly Review",
-    habit: "Check your streak & adjust habit if needed.",
-    category: "Review",
-    duration: "10 minutes",
+  6: {
+    quote: "Gratitude turns what we have into enough.",
+    tasks: [{ activity: "Gratitude", detail: "Write 3 things you’re grateful for", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day8: {
-    title: "Visual Progress",
-    habit: "Create a habit tracker for daily motivation.",
-    category: "Motivation",
-    duration: "5 minutes",
+  7: {
+    quote: "Breathe deeply, live fully.",
+    tasks: [{ activity: "Deep Breathing", detail: "4-7-8 breathing exercise", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day9: {
-    title: "Reduce Temptation",
-    habit: "Remove one bad habit trigger from your environment.",
-    category: "Environment",
-    duration: "5 minutes",
+  8: {
+    quote: "Plan your day, own your life.",
+    tasks: [{ activity: "Plan Day", detail: "Write top 3 priorities", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day10: {
-    title: "Pairing Habits",
-    habit: "Combine a habit with an enjoyable activity.",
-    category: "Motivation",
-    duration: "5 minutes",
+  9: {
+    quote: "Disconnect to reconnect.",
+    tasks: [{ activity: "Digital Detox", detail: "No phone for 1 hour", time: "60 minutes" }],
+    notes: "",
     completed: false,
   },
-  day11: {
-    title: "Increase Friction for Bad Habits",
-    habit: "Make one undesired habit harder to do.",
-    category: "Environment",
-    duration: "5 minutes",
+  10: {
+    quote: "Strong body, strong mind.",
+    tasks: [{ activity: "Exercise", detail: "Bodyweight workout", time: "15 minutes" }],
+    notes: "",
     completed: false,
   },
-  day12: {
-    title: "Habit Reflection",
-    habit: "Reflect on which habits feel easiest & hardest.",
-    category: "Review",
-    duration: "10 minutes",
+  11: {
+    quote: "Learn something new every day.",
+    tasks: [{ activity: "Learn Skill", detail: "Practice coding/learning", time: "30 minutes" }],
+    notes: "",
     completed: false,
   },
-  day13: {
-    title: "Accountability Partner",
-    habit: "Tell someone about your habit to increase commitment.",
-    category: "Motivation",
-    duration: "5 minutes",
+  12: {
+    quote: "Be mindful of your thoughts.",
+    tasks: [{ activity: "Mindfulness", detail: "Observe your thoughts", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day14: {
-    title: "Stack Another Habit",
-    habit: "Attach a second habit to an existing routine.",
-    category: "Routine",
-    duration: "3 minutes",
+  13: {
+    quote: "Declutter your space, declutter your mind.",
+    tasks: [{ activity: "Declutter", detail: "Organize workspace", time: "15 minutes" }],
+    notes: "",
     completed: false,
   },
-  day15: {
-    title: "Make It Invisible",
-    habit: "Hide one bad habit trigger from sight.",
-    category: "Environment",
-    duration: "5 minutes",
+  14: {
+    quote: "Read to feed your mind.",
+    tasks: [{ activity: "Reading", detail: "Read an article/book chapter", time: "20 minutes" }],
+    notes: "",
     completed: false,
   },
-  day16: {
-    title: "Two-Minute Rule Redux",
-    habit: "Shrink a new habit to 2 minutes to start easily.",
-    category: "Action",
-    duration: "2 minutes",
+  15: {
+    quote: "Step outside, refresh your mind.",
+    tasks: [{ activity: "Walk Outside", detail: "10 min walk for fresh air", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day17: {
-    title: "Reward Yourself",
-    habit: "Use a small reward for completing your habit today.",
-    category: "Motivation",
-    duration: "3 minutes",
+  16: {
+    quote: "Reflect, learn, improve.",
+    tasks: [{ activity: "Reflection", detail: "Review the day", time: "5 minutes" }],
+    notes: "",
     completed: false,
   },
-  day18: {
-    title: "Reinforce Identity",
-    habit: "Write one sentence reinforcing your identity: 'I am the type of person who ____.'",
-    category: "Mindset",
-    duration: "5 minutes",
+  17: {
+    quote: "Stretch to stay flexible.",
+    tasks: [{ activity: "Stretch & Move", detail: "Stretch for flexibility", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day19: {
-    title: "Habit Audit",
-    habit: "List your habits and remove one that no longer serves you.",
-    category: "Review",
-    duration: "10 minutes",
+  18: {
+    quote: "Create to express yourself.",
+    tasks: [{ activity: "Creative Time", detail: "Draw, write, or music", time: "20 minutes" }],
+    notes: "",
     completed: false,
   },
-  day20: {
-    title: "Stack a Bonus Habit",
-    habit: "Attach one more small habit to an existing routine.",
-    category: "Routine",
-    duration: "3 minutes",
+  19: {
+    quote: "Calm mind, restful sleep.",
+    tasks: [{ activity: "Evening Meditation", detail: "Calm mind before bed", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-  day21: {
-    title: "21-Day Reflection",
-    habit: "Review your 21-day streak, celebrate wins & plan next 21 days.",
-    category: "Review",
-    duration: "15 minutes",
+  20: {
+    quote: "Review, plan, improve.",
+    tasks: [{ activity: "Review Habits", detail: "Check your progress & notes", time: "10 minutes" }],
+    notes: "",
     completed: false,
   },
-};
-
-export const habitDescriptions = {
-  "identity-statement":
-    "Identity drives behavior. Define the type of person you want to become.",
-  "habit-cue":
-    "A habit needs a clear trigger: same time + same place = automatic.",
-  "2-minute-rule":
-    "Scale down any habit to the smallest possible version to reduce friction.",
-  "habit-stacking":
-    "Attach the new habit immediately after an existing routine.",
-  "environment-design":
-    "Make good habits easier and bad habits harder.",
-  "reward-system":
-    "Use small rewards to reinforce consistency.",
-  "weekly-review":
-    "Reflect, adjust, and keep the streak alive.",
 };
