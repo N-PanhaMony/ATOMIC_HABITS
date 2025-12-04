@@ -84,7 +84,8 @@ export default function Grid() {
               dayNum={dayNum}
               icon={isLocked ? <i className="fa-solid fa-lock"></i> : <i className="fa-regular fa-circle"></i>}
               taskData={taskData}                 // saved data
-              taskPlan={task_plan[task]}          // default data from index.js
+              taskPlan={task_plan[task]}
+              quote={task_plan[task]?.quote}          // default data from index.js
               handleSave={handleSave}
               handleComplete={handleComplete}
             />
