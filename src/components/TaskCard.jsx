@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "./Modal";
 
 export default function TaskCard(props) {
   const {
@@ -19,6 +20,8 @@ export default function TaskCard(props) {
 
   const [notes, setNotes] = useState(taskData.notes || taskPlan.notes || "");
 
+  const [showQuote, setShowQuote] = useState(true); // auto-open for testing
+
   // Add new task
   const addTask = () =>
     setTasks([...tasks, { activity: "", detail: "", time: "" }]);
@@ -38,6 +41,13 @@ export default function TaskCard(props) {
 
   return (
     <div className="task-container">
+       <Modal
+            showModal={showQuote}                  
+            handleCloseModal={() => setShowQuote(false)}  
+            title={`Day ${dayNum} Quote`}
+            message={taskPlan.quote}
+        />
+
       <div className="task-card card">
         <div className="plan-card-header">
           <p>Day {dayNum}</p>
