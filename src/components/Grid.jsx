@@ -78,17 +78,19 @@ export default function Grid() {
         // If this day was clicked, show the full TaskCard
         if (taskIndex === selectedTask) {
           return (
-            <TaskCard
-              key={taskIndex}
-              taskIndex={taskIndex}
-              dayNum={dayNum}
-              icon={isLocked ? <i className="fa-solid fa-lock"></i> : <i className="fa-regular fa-circle"></i>}
-              taskData={taskData}                 // saved data
-              taskPlan={task_plan[task]}
-              quote={task_plan[task]?.quote}          // default data from index.js
-              handleSave={handleSave}
-              handleComplete={handleComplete}
-            />
+            <div className="task-container">
+              <TaskCard
+                key={taskIndex}
+                taskIndex={taskIndex}
+                dayNum={dayNum}
+                icon={isLocked ? <i className="fa-solid fa-lock"></i> : <i className="fa-regular fa-circle"></i>}
+                taskData={taskData}                 // saved data
+                taskPlan={task_plan[task]}
+                quote={task_plan[task]?.quote}          // default data from index.js
+                handleSave={handleSave}
+                handleComplete={handleComplete}
+              />
+            </div>
           )
         }
 
@@ -102,7 +104,7 @@ export default function Grid() {
             }}
             className={`plan-card ${isLocked ? 'inactive' : ''}`}
           >
-            <div className="plan-card-number">
+            <div className="plan-card-header">
               {/* Format day number: 01, 02, 03… */}
               <p>Day {dayNum}</p>
             </div>

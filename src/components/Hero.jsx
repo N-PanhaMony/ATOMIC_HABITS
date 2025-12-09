@@ -1,13 +1,13 @@
 export default function Hero() {
   return (
-    <>
+    <div className="hero">
       <h5>Complete this 21-day habit challenge if you want to...</h5>
 
       <ol className="benefits-list">
         <li>Build habits that actually stick — without willpower battles</li>
         <li>Upgrade your identity and become the person you want to be</li>
         <li>Follow a simple, science-backed daily system inspired by Atomic Habits</li>
-        <li>Create lifelong consistency in fitness, learning, or productivity 💛</li>
+        <li>Create lifelong consistency in fitness, learning, or productivity</li>
       </ol>
 
       <h3>The Rules</h3>
@@ -44,6 +44,6 @@ export default function Hero() {
       </p>
 
       <p>Complete each day of the 21-day plan and track your progress along the way ✅</p>
-    </>
+    </div>
   );
 }

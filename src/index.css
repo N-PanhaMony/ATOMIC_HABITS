@@ -1,0 +1,214 @@
+:root {
+    --main-color: #10b981;       /* Mint Green */
+    --main-color-dark: #059669;  /* Darker Mint Green for hover */
+    --main-color-light: #d1fae5; /* Light background for quotes */
+    --text-color: #333;          /* Default text */
+    --text-muted: #555;          /* Subtle text */
+    --bg-light: #f9fafb;         /* Page background */
+}
+
+/* Body */
+body {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    font-family: system-ui, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    align-items: stretch;  /* children stretch to container width */
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1.text {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--main-color);
+}
+
+header p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* Main content */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.rule-item {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.rule-item p {
+    min-width: 175px;
+}
+
+h3,
+.task-grid-plan {
+    padding-top: 0.5rem;
+}
+
+/* Task grid */
+.task-grid-plan {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.plan-card {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+}
+
+.inactive {
+    position: relative;
+    z-index: 1;
+    cursor: not-allowed;
+}
+
+.plan-card-header {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.plan-card-header p i {
+    font-weight: 600;
+    font-size: 0.5rem;
+    line-height: 1rem;
+}
+
+/* Task container for expanded day */
+.task-container {
+    grid-column: span 3 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+/* Task card */
+.task-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Quote inside card */
+.task-card .quote {
+    font-style: italic;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 4px solid var(--main-color);
+    background-color: var(--main-color-light);
+    border-radius: 4px;
+}
+
+/* Task grid content */
+.task-grid {
+    display: grid;
+    gap: 0.5rem;
+    overflow-x: auto;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Inputs and textarea */
+.task-content input,
+.task-grid textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 1rem;
+    outline: none;
+    flex: 1;                   /* grow to available space */
+}
+
+.task-content input:focus,
+.task-grid textarea:focus {
+    border-color: var(--main-color);
+}
+
+/* Buttons */
+.task-content button,
+.task-grid > button,
+.task-button button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.task-content button:hover,
+.task-grid > button:hover,
+.task-button button:hover {
+    background-color: var(--main-color-dark);
+    transform: scale(1.03);
+}
+
+.task-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Disabled buttons */
+.task-button button:disabled {
+    background-color: #e0e0e0;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    color: var(--text-muted);
+}
