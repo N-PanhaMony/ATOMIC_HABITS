@@ -35,26 +35,30 @@ Built with **React + Vite**, this app allows users to open each day, edit tasks,
 ---
 
 ## 📂 Project Structure
-
 .
 ├── public/
-│   └── vite.svg
+│   └── vite.svg                 # Vite default asset
+│
 ├── src/
-│   ├── App.jsx
-│   ├── assets/
-│   │   └── react.svg
+│   ├── App.jsx                  # Root component
+│   ├── main.jsx                 # React entry point
+│   ├── index.css                # Global styles
+│   ├── fanta.css                # Optional theme / extras
+│
 │   ├── components/
-│   │   ├── Grid.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Layout.jsx
-│   │   ├── Modal.jsx
-│   │   └── TaskCard.jsx
-│   ├── fanta.css
-│   ├── index.css
-│   ├── main.jsx
-│   └── utils/
-│       └── index.js
-└── vite.config.js
+│   │   ├── Grid.jsx             # 21-day grid + logic
+│   │   ├── Hero.jsx             # Hero section
+│   │   ├── Layout.jsx           # App shell/wrapper
+│   │   ├── Modal.jsx            # Reusable modal component
+│   │   └── TaskCard.jsx         # Editable task UI for each day
+│
+│   ├── utils/
+│   │   └── index.js             # Atomic habits program data
+│
+│   └── assets/
+│       └── react.svg            # App assets
+│
+└── vite.config.js               # Vite configuration
 
 # Clone the repository
 git clone https://github.com/your-username/your-repo-name.git
