@@ -36,6 +36,26 @@ export default function TaskCard(props) {
     setTasks(updated);
   };
 
+// Save all tasks + notes
+  const saveData = () => {
+    props.handleSave(taskIndex, {
+      tasks,
+      notes,
+      isComplete: false,
+    });
+  };
+
+  // Mark day complete AND save everything
+  const completeDay = () => {
+    props.handleSave(taskIndex, {
+      tasks,
+      notes,
+      isComplete: true,
+    });
+  };
+
+
+
   return (
     <div className="task-container">
       <div className="task-card card">
@@ -92,8 +112,8 @@ export default function TaskCard(props) {
 
 
       <div className="task-button">
-        <button>Save & Edit</button>
-        <button disabled={true}>Complete</button>
+        <button onClick={saveData}>Save & Edit</button>
+        <button onClick={completeDay}>Complete</button>
       </div>
     </div>
   );
