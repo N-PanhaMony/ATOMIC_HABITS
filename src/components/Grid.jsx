@@ -3,48 +3,59 @@ import { atomicHabitsProgram as task_plan } from '../utils/index.js'
 import TaskCard from './TaskCard.jsx'
 
 export default function Grid() {
-  // Store all saved progress (completed days, notes…)
+
+  // Object keyed by day index → stores tasks, notes, completion state
+  // Example: { 0: { tasks: [...], notes: "...", isComplete: true } }
   const [savedTasks, setSavedTasks] = useState({})
 
-  // Which day is currently opened (null = closed)
+  // Tracks which day card is currently opened (null = grid view)
   const [selectedTask, setSelectedTask] = useState(null)
 
-  // Get list of completed task indexes
+  // Derive completed day indexes from savedTasks
+  // This avoids storing redundant state
   const completedTasks = Object.keys(savedTasks).filter(
     (key) => savedTasks[key]?.isComplete
   )
 
-  // Save task progress + sync to localStorage
+  // Centralized save handler
+  // - merges new data
+  // - preserves completion if already completed
+  // - syncs to localStorage
   const handleSave = (index, data) => {
     const newTasks = {
       ...savedTasks,
       [index]: {
         ...data,
-        // Keep completed state if already completed earlier
+        // Prevent accidental "un-complete" when editing
         isComplete: !!data.isComplete || !!savedTasks[index]?.isComplete,
       },
     }
 
     setSavedTasks(newTasks)
+
+    // Persist progress across reloads
     localStorage.setItem('habitChallenge', JSON.stringify(newTasks))
 
-    // Close card after saving
+    // UX: close the editor after saving
     setSelectedTask(null)
   }
 
-  // Quick shortcut to mark a task complete
+  // Helper shortcut for "complete" action
+  // Keeps Grid as the single source of truth
   const handleComplete = (index) => {
     handleSave(index, { isComplete: true })
   }
 
-  // Load saved progress from localStorage when component first loads
+  // Load persisted data only once on mount
   useEffect(() => {
+    // Guard for non-browser environments (SSR safety)
     if (typeof window === 'undefined') return
 
     const saved = localStorage.getItem('habitChallenge')
     if (saved) {
       try {
-        // Prevent React warning about setState inside effect
+        // setTimeout avoids React warning in some edge cases
+        // (not strictly required, but defensive)
         setTimeout(() => {
           setSavedTasks(JSON.parse(saved))
         }, 0)
@@ -57,36 +68,45 @@ export default function Grid() {
   return (
     <div className="task-grid-plan">
 
-      {/* Loop through all days */}
+      {/* Render each day from the plan definition */}
       {Object.keys(task_plan).map((task, taskIndex) => {
 
-        // Lock this day unless previous day is completed
+        // Lock rule:
+        // - Day 0 is always unlocked
+        // - Other days unlock only if previous day is complete
         const isLocked =
           taskIndex !== 0 && !completedTasks.includes(`${taskIndex - 1}`)
 
-        // Get saved progress of this specific day
+        // Load saved data for this day (if any)
         const taskData = savedTasks[taskIndex] || {}
 
-        const dayNum = taskIndex + 1 < 10 ? `0${taskIndex + 1}` : taskIndex + 1
+        // Format day number as 01, 02, 03...
+        const dayNum =
+          taskIndex + 1 < 10 ? `0${taskIndex + 1}` : taskIndex + 1
 
+        // Completion icon state
         const icon = taskData.isComplete ? (
-                <i className="fa-solid fa-check"></i>
-              ) : (
-                <i className="fa-regular fa-circle"></i>
-              )
+          <i className="fa-solid fa-check"></i>
+        ) : (
+          <i className="fa-regular fa-circle"></i>
+        )
 
-        // If this day was clicked, show the full TaskCard
+        // If this day is selected → render editor instead of card
         if (taskIndex === selectedTask) {
           return (
-            <div className="task-container">
+            <div className="task-container" key={taskIndex}>
               <TaskCard
-                key={taskIndex}
                 taskIndex={taskIndex}
                 dayNum={dayNum}
-                icon={isLocked ? <i className="fa-solid fa-lock"></i> : <i className="fa-regular fa-circle"></i>}
-                taskData={taskData}                 // saved data
-                taskPlan={task_plan[task]}
-                quote={task_plan[task]?.quote}          // default data from index.js
+                // Lock icon overrides completion icon
+                icon={
+                  isLocked
+                    ? <i className="fa-solid fa-lock"></i>
+                    : <i className="fa-regular fa-circle"></i>
+                }
+                taskData={taskData}             // persisted user data
+                taskPlan={task_plan[task]}      // default plan template
+                quote={task_plan[task]?.quote}  // motivational text
                 handleSave={handleSave}
                 handleComplete={handleComplete}
               />
@@ -94,26 +114,27 @@ export default function Grid() {
           )
         }
 
-
-        // Default: show day card
+        // Default grid card view
         return (
           <button
             key={taskIndex}
+            // Prevent opening locked days
             onClick={() => {
               if (!isLocked) setSelectedTask(taskIndex)
             }}
             className={`plan-card ${isLocked ? 'inactive' : ''}`}
           >
             <div className="plan-card-header">
-              {/* Format day number: 01, 02, 03… */}
               <p>Day {dayNum}</p>
             </div>
 
-            {/* Icon: lock → check → empty circle */}
+            {/* Priority: lock → completed → incomplete */}
             <div className="task-card-icon">
               {isLocked ? (
                 <i className="fa-solid fa-lock"></i>
-              ) : (icon)}
+              ) : (
+                icon
+              )}
             </div>
           </button>
         )
